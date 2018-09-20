@@ -7,10 +7,12 @@ using The_Professionals_SeniorProject.Models.Schema;
 
 
 
-namespace The_Professionals_SeniorProject.Models.DAL
+namespace The_Professionals_SeniorProject.DAL
 {
     public class AchievementContext : DbContext
     {
+        public AchievementContext(DbContextOptions<AchievementContext> options) : base(options) { }
+
         public DbSet<User> Users { get; set; }
 
         public DbSet<Accomplishment> Accomplishments { get; set; }
