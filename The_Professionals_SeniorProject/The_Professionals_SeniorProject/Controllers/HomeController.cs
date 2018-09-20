@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using The_Professionals_SeniorProject.Models;
 
+
 namespace The_Professionals_SeniorProject.Controllers
 {
     public class HomeController : Controller
@@ -13,25 +14,15 @@ namespace The_Professionals_SeniorProject.Controllers
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult About()
+        }   
+     
+        public IActionResult CreateAccount()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewData["Message"] = "Please enter your account credentials.";
             return View();
-        }
+            //ToDo: Build form to correspond with model User.cs
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
