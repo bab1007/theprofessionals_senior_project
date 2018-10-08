@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using The_Professionals_SeniorProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using The_Professionals_SeniorProject.Models.Schema;
 
 
 namespace The_Professionals_SeniorProject.Controllers.Navigation
@@ -19,7 +20,7 @@ namespace The_Professionals_SeniorProject.Controllers.Navigation
             _context = context;
 
         }
-       
+      
 
     }
 }

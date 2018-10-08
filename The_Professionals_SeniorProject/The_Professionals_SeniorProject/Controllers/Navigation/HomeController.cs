@@ -9,6 +9,7 @@ using The_Professionals_SeniorProject.Models;
 
 namespace The_Professionals_SeniorProject.Controllers
 {
+   
     public class HomeController : Controller
     {
         public IActionResult Index()

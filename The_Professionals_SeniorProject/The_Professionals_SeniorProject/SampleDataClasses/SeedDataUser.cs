@@ -11,23 +11,23 @@ namespace The_Professionals_SeniorProject.SampleDataClasses
     //ToDo: Create sample data for users
 
 {
-//    public static class SeedDataUser
-//    {
-//       public static void EnsurePopulated(IApplicationBuilder app)
-//        {
-//            AchievementContext context = app.ApplicationServices.GetRequiredService<AchievementContext>();
-//            if (!context.Users.Any())
-//            {
-//                context.Users.AddRange{
-//                    new User
-//                    {
-//                        Fname = 
-//                    }
+    public static class SeedDataUser
+    {
+        //public static void EnsurePopulated(IApplicationBuilder app)
+        //{
+        //    AchievementContext Context = app.ApplicationServices.GetRequiredService<AchievementContext>();
+        //    if (!Context.Users.Any())
+        //    {
+        //        Context.Users.AddRange{ 
+        //            new User
+        //            {
+        //                Fname = "Tom", Lname = "Smith", 
+                        
 
-//                }
-//            }
-//        }
+        //            }
+        //    }
+        //}
 
 
-//    }
+    }
 }
