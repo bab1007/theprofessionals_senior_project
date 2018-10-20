@@ -1,0 +1,31 @@
+  <!-- ======================= Main Work Area ================================-->
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">My Accomplishments</h1>
+    </div>
+    <div class="row">
+        <form asp-controller="#" asp-action="#">
+            <div class="form-group">
+                <label for="asset" class="control-label col-sm-2"><b>My Employees:</b></label>
+                <div class="col-sm-10">
+                    <!--============ Use foreach loop to generate employees to populate dropdown ===================-->
+                    <select class="form-control">
+                        <option>Tom</option>
+                        <option>Raad</option>
+                        <option>Barry</option>
+                        <option>Zach</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <input type="submit" class="btn btn-info ml-3" value="View Report"><br>
+        </form>
+    </div>
+    <br>
+    <br>
+    <!-- ======================= Using foreach loops to generate table for each accomp. type, insert asp-action in buttons  ================-->
+    <h3 class="">Select Employee to View Report</h3>
+   
+
+</main>

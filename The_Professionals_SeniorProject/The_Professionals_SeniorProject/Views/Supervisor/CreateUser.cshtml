@@ -1,0 +1,65 @@
+<!-- ======================= Main Work Area ================================-->
+
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Supervisor</h1>
+    </div>
+
+    <!-- ================== Form ======================-->
+
+
+    <div class="container">
+        <div class="row">
+
+            <form class="ml-5 bg-light border border-info p-5 rounded" asp-action="#" asp-controller="#">
+                <h2 class="text-center ">Create New User</h2><hr>
+                <div class="form-group">
+                    <label for="school">Employee ID: </label>
+                    <input type="text" class="form-control" name="EmployeeID" id="EmployeeID" placeholder="2018467">
+                </div>
+                <div class="form-group">
+                    <label for="activity">First Name: </label>
+                    <input type="text" class="form-control" name="FirstName" id="FirstName" placeholder="John">
+                </div>
+                <div class="form-group">
+                    <label for="activity">Last Name: </label>
+                    <input type="text" class="form-control" name="LastName" id="LastName" placeholder="Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="activity">Email: </label>
+                    <input type="text" class="form-control" name="Email" id="Email" placeholder="johndoe123@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="activity">Phone: </label>
+                    <input type="text" class="form-control" name="Phone" id="phone" placeholder="555-555-555">
+                </div>
+
+                <div class="form-group">
+                    <label for="url">Initial Password: </label>
+                    <input type="text" class="form-control" name="password" id="password">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Supervisor ID: </label>
+                    <input type="text" class="form-control" name="SupervisorID" id="SupervisorID">
+                </div>
+
+                <div class="form-check checkboxWrapper">
+                    <label for="isSupervisor"> Is this Employee a Supervisor? </label><br>
+                    <label class="form-check-label checkbox ml-4">
+                        <input type="checkbox" class="form-check-input " name="isSupervisor" value="true"> Is Supervisor
+                    </label>
+                </div>
+
+                <br><br>
+                <input type="submit" class="btn btn-info" value="Create New Employee">
+                <br>
+                <br>
+            </form>
+
+        </div><br>
+    </div>
+    
+</main>
