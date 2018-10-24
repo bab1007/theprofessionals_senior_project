@@ -1,3 +1,5 @@
+
+@model Accomplishment
 <!-- ======================= Main Work Area ================================-->
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -10,35 +12,44 @@
     <h2 class="text-center">Online or Digital Media</h2><br>
     <div class="container">
         <div class="row">
-            <form class="ml-5" asp-action="#" asp-controller="#">
+
+            <form class="ml-5" asp-action="MediaForm">
+
+                <input type="hidden" asp-for="AchievementType" value="Media"/>
+                                                <!--Insert User Session Variable in USERID-->
+                <input type="hidden" asp-for="UserID" value="1" />
+
                 <div class="form-group">
-                    <label for="employer">Provider: </label>
-                    <input type="text" class="form-control" name="employer" id="employer" placeholder="Team Treehouse">
+                    <label asp-for="Provider" class="control-label"></label>
+                    <input asp-for="Provider" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="jobTitle">Title: </label>
-                    <input type="text" class="form-control" name="jobTitle" id="jobTitle" placeholder="ASP.net User Authentication">
+                    <label asp-for="Activity" class="control-label"></label>
+                    <input asp-for="Activity" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" rows="5" name="description" id="description" placeholder="Describe the content of the course."></textarea>
-                    <p class="float-right"><i>400 character limit</i></p>
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
 
                 <label>Start Date: </label>
                 <div class="datepicker input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" readonly />
+                    <input class="form-control" asp-for="DateStarted" type="text" readonly />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
 
                 <label>End Date: </label>
                 <div class="datepicker input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" readonly />
+                    <input class="form-control" asp-for="DateCompleted" type="text" readonly />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
                 <div class="form-group">
-                    <label for="url">URL: </label>
-                    <input type="text" class="form-control" name="url" id="url">
+                    <label asp-for="URL" class="control-label"></label>
+                    <input asp-for="URL" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Submit"><br>

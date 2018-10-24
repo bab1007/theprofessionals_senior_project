@@ -1,3 +1,4 @@
+@model Accomplishment
 <!-- ======================= Main Work Area ================================-->
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -10,47 +11,57 @@
     <h2 class="text-center">Work Experience</h2><br>
     <div class="container">
         <div class="row">
-            <form class="ml-5" asp-action="#" asp-controller="#">
+            <form class="ml-5" asp-action="WorkForm">
+                <input type="hidden" asp-for="AchievementType" value="Work" />
+                <!--Insert User Session Variable in USERID-->
+                <input type="hidden" asp-for="UserID" value="1" />
+
                 <div class="form-group">
-                    <label for="employer">Project Name: </label>
-                    <input type="text" class="form-control" name="employer" id="employer" placeholder="Travers Consulting">
+                    <label asp-for="Provider" class="control-label">Project Name:</label>
+                    <input asp-for="Provider" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="jobTitle">Job Title: </label>
-                    <input type="text" class="form-control" name="jobTitle" id="jobTitle" placeholder="Developer">
+                    <label asp-for="JobTitle" class="control-label"></label>
+                    <input asp-for="JobTitle" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label for="description">Responsibilities:</label>
-                    <textarea class="form-control" rows="5" name="description" id="description" placeholder="Describe responsibilities that developed you as an employee. Any leadership roles?"></textarea>
+                    <textarea class="form-control" asp-for="Description" rows="5" name="description" id="description" placeholder="Describe responsibilities that developed you as an employee. Any leadership roles?"></textarea>
                     <p class="float-right"><i>400 character limit</i></p>
                 </div>
 
                 <label>Start Date: </label>
                 <div class="datepicker input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" readonly />
+                    <input class="form-control" asp-for="DateStarted" type="text" readonly />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
 
                 <label>End Date: </label>
                 <div class="datepicker input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" readonly />
+                    <input class="form-control" asp-for="DateCompleted" type="text" readonly />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
                 <div class="form-group">
-                    <label for="url">URL: </label>
-                    <input type="text" class="form-control" name="url" id="url">
+                    <label asp-for="URL" class="control-label"></label>
+                    <input asp-for="URL" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="contact">Contact Person: </label>
-                    <input type="text" class="form-control" name="contact" id="contact">
+                    <label asp-for="ContactPerson" class="control-label"></label>
+                    <input asp-for="ContactPerson" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="contactPhone">Contact Phone: </label>
-                    <input type="text" class="form-control" name="contactPhone" id="contactPhone">
+                    <label asp-for="ContactPhone" class="control-label"></label>
+                    <input asp-for="ContactPhone" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label for="contactEmail">Contact Email: </label>
-                    <input type="text" class="form-control" name="contactEmail" id="contactEmail">
+                    <label asp-for="ContactEmail" class="control-label"></label>
+                    <input asp-for="ContactEmail" class="form-control" />
+                    <span class="text-danger"></span>
                 </div>
                 <br>
                 <input type="submit" class="btn btn-primary" value="Submit"><br>

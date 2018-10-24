@@ -15,7 +15,7 @@ namespace The_Professionals_SeniorProject.Models.Schema
         [Key]
         public int AchievementID { get; set; }
         
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
         //Virtual property User represents foreign key relationship between User => Accomplishment
         public virtual User User { get; }
         
@@ -47,6 +47,7 @@ namespace The_Professionals_SeniorProject.Models.Schema
 
         public DateTime DateApproved { get; set; }
 
+        [System.ComponentModel.DefaultValue(false)]
         public bool IsApproved { get; set; }
 
 
