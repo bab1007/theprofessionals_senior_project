@@ -1,4 +1,4 @@
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<main  class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 bg-white">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
     </div>
@@ -6,22 +6,22 @@
     <h2>Welcome, John Doe</h2>
     <div class="container">
         <div class="row p-5" id="accomplishments">
-            <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='myAccomplishments.html'">
+            <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='@Url.Action("MyAccomplishments")'">
                 <p class="text-center text-info"><i class="fas fa-award fa-7x"></i></p>
-                <h4 class="text-center">  My Accomplishments</h4>
+                <h4 class="text-center"> My Accomplishments</h4>
                 <p>View your a list of your approved accomplishments and access detailed view of each one.</p>
             </div>
-            <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='submitAccomplish.html'">
+            <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='@Url.Action("SubmitAccomplishment")'">
                 <p class="text-center text-info"><i class="fas fa-folder-plus fa-7x"></i></p>
                 <h4 class="text-center"> Submit New Accomplishment</h4>
                 <p>Select an accomplishment type and submit for your supervisor to approve. Once approved, it will be added to your list. </p>
             </div>
-            <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='internalResume.html'">
+            <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='@Url.Action("InternalResume")'">
                 <p class="text-center text-info"><i class="fas fa-file-invoice fa-7x"></i></p>
                 <h4 class="text-center"> Generate Internal Resume</h4>
                 <p>Automatically formats your accomplishments into a resume. Can use to print a resume or show co-workers and supervisors. </p>
             </div>
-            <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='emailResume.html'">
+            <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='@Url.Action("/")'">
                 <p class="text-center text-info"><i class="fas fa-envelope fa-7x"></i></p>
                 <h4 class="text-center"> Email Internal Resume</h4>
                 <p class="ml-1">Send your internal resume through email.</p>

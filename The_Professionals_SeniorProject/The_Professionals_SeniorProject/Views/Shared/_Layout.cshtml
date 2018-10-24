@@ -20,44 +20,44 @@
         </ul>
     </nav>
     <!--================================== Side Navigation ========================-->
-    <div class="container-fluid" id="sidenav">
+    <div class="container-fluid " id="sidenav">
         <div class="row">
             <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link " href="index.html">
+                            <a class="nav-link " asp-controller="Accomplishments" asp-action="Index">
                                 <span data-feather="home"></span>
                                 Dashboard
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="myAccomplishments.html">
+                            <a class="nav-link active" asp-controller="Accomplishments" asp-action="MyAccomplishments">
                                 <span data-feather="award"></span>
                                 My Accomplishments
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="submitAccomplish.html">
+                            <a class="nav-link" asp-controller="Accomplishments" asp-action="SubmitAccomplishment">
                                 <span data-feather="send"></span>
                                 Submit Accomplishment
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="internalResume.html">
+                            <a class="nav-link" asp-controller="Accomplishments" asp-action="InternalResume">
                                 <span data-feather="file-text"></span>
                                 Internal Resume
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="submitAccomplish.html">
+                            <a class="nav-link" asp-controller="Accomplishments" asp-action="#">
                                 <span data-feather="mail"></span>
                                 Email Internal Resume
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="accountSettings.html">
+                        <li class="nav-item" >
+                            <a class="nav-link" asp-controller="AccountSettings" asp-action="Index">
                                 <span data-feather="settings"></span>
                                 Account Settings
                             </a>
@@ -70,21 +70,21 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="approvals.html">
+                            <a class="nav-link" asp-controller="Supervisor" asp-action="Approvals">
                                 <span data-feather="check-circle"></span>
                                 Approval Requests
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="employeeReport.html">
+                            <a class="nav-link" asp-controller="Supervisor" asp-action="EmployeeReport">
                                 <span data-feather="layers"></span>
                                 Employee Report
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="createUser.html">
+                            <a class="nav-link" asp-controller="Supervisor" asp-action="CreateUser">
                                 <span data-feather="user-plus"></span>
                                 Create New User
                             </a>
@@ -97,7 +97,7 @@
 
             
                 @RenderBody()
-                <hr />
+               
 
         </div>
     </div>
@@ -110,6 +110,6 @@
                 feather.replace();
             </script>
 
-            @RenderSection("Scripts", required: false)
+          
 </body>
 </html>

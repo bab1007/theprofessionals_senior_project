@@ -1,10 +1,11 @@
 ﻿body {
-    background-color: rgb(83, 124, 144);
+    background-color: rgba(83, 124, 144);
 }
 
 #login {
     margin-left: 20vw;
     margin-top: 10vw;
+    
 }
 
 .form-horizontal {

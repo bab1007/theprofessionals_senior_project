@@ -56,21 +56,6 @@ body {
     font-size: .75rem;
     text-transform: uppercase;
 }
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {
-    height: 550px
-}
-
-/* Set gray background color and 100% height */
-.sidenav {
-    background-color: rgb(83, 124, 144);
-    height: 100%;
-}
-
-#sidenav {
-    background-color: rgb(83, 124, 144);
-}
-
 
 /*
  ==============================* Navbar ==============================
@@ -165,11 +150,5 @@ form {
     .col-lg-10 {
         width: 100% !important;
         float: left !important;
-    }
-}
-/* On small screens, set height to 'auto' for the grid */
-@media screen and (max-width: 767px) {
-    .row.content {
-        height: auto;
     }
 }
