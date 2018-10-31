@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using The_Professionals_SeniorProject.DAL;
 using The_Professionals_SeniorProject.Models.Schema;
 
@@ -109,10 +110,15 @@ namespace The_Professionals_SeniorProject.Controllers
             return View(accomplishment);
         }
 
+        //========== Generate internal Resume based on User Information ================
 
         public IActionResult InternalResume()
         {
-            return View();
+            int user_id = 1; //Change to be the userID obtained through the session variables
+            var myAccomplishments = _context.Accomplishments.Where(a => a.UserID == user_id);
+                                                            
+
+            return View(myAccomplishments);
         }
 
 
