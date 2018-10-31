@@ -117,14 +117,17 @@ namespace The_Professionals_SeniorProject.Controllers
             int user_id = 1; //Change to be the userID obtained through the session variables
             var myAccomplishments = _context.Accomplishments.Where(a => a.UserID == user_id);
                                                             
-
             return View(myAccomplishments);
         }
 
-
+        //================= List User Accomplishments in a Table ======================================
         public IActionResult MyAccomplishments()
         {
-            return View();
+            int user_id = 1; // Change to be the userID obtained through the session variables
+            var myAccomplishemnts = _context.Accomplishments.Where(a => a.UserID == user_id)
+                                                            .OrderBy(a => a.AchievementType);
+
+            return View(myAccomplishemnts);
         }
 
         public IActionResult ViewAccomplishment()

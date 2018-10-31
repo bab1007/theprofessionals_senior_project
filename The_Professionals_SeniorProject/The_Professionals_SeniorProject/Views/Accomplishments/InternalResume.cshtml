@@ -5,7 +5,7 @@
 
 <main role="main" id="resume" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <a class="text-secondary" href="submitAccomplish.html">
+        <a class="text-secondary" asp-action="Index">
             <h1 class="h2">Dashboard</h1>
         </a>
     </div>
@@ -20,15 +20,14 @@
             <div class="int-Resume bg-info">
                 <h4 class="ml-4 pt-2 text-white">Work Experience</h4>
                 <ul class="list-group list-group-flush">
-                    @if (@Model.Where(a => a.AchievementType == "Work") != null)
-                    { 
+                  
                         @foreach (var item in (@Model.Where(a => a.AchievementType == "Work")))
                         {
                             <li class="list-group-item">
                                 <div class="col-lg-4 float-left">
                                     <p><b>Project Name: </b> @item.Provider</p>
                                     <p><b>Job Title: </b> @item.Provider</p>
-                                    <p><b>Dates: </b> @item.DateStarted - @item.DateCompleted</p>
+                                    <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
                                 </div>
                                 <div class="col-lg-8 float-right">
                                     <p><b>Responsibilities:</b></p>
@@ -36,7 +35,7 @@
                                 </div>
                             </li>
                         }
-                    }
+                    
                 </ul>
             </div>
 
@@ -49,7 +48,7 @@
                             <div class="col-lg-4 float-left">
                                 <p><b>School/Provider: </b> @item.Provider</p>
                                 <p><b>Activity Name: </b> @item.Activity</p>
-                                <p><b>Dates: </b> @item.DateStarted - @item.DateCompleted</p>
+                                <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
                                 <p><b>Instructor:</b> @item.ContactPerson</p>
                             </div>
                             <div class="col-lg-8 float-right">
@@ -57,13 +56,13 @@
                                 <p>@item.Description</p>
                             </div>
                         </li>
-                    }
+                     }
 
                 </ul>
             </div>
 
             <div class="int-Resume bg-info">
-                <h4 class="ml-4 pt-2 text-white">Digital Media</h4>
+                <h4 class="ml-4 pt-2 text-white"> Digital Media</h4>
                 <ul class="list-group list-group-flush">
 
                     @foreach (var item in Model.Where(a => a.AchievementType == "Media"))
@@ -72,7 +71,7 @@
                             <div class="col-lg-4 float-left">
                                 <p><b>Provider: </b> @item.Provider</p>
                                 <p><b>Activity Name: </b>@item.Activity</p>
-                                <p><b>Dates: </b> @item.DateStarted - @item.DateCompleted</p>
+                                <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
                                 <p><b>URL:</b> @item.URL</p>
                             </div>
                             <div class="col-lg-8 float-right">
@@ -94,7 +93,7 @@
                             <div class="col-lg-4 float-left">
                                 <p><b>Author: </b> @item.Author</p>
                                 <p><b>Title: </b> @item.BookTitle</p>
-                                <p><b>Dates: </b> @item.DateStarted - @item.DateCompleted</p>
+                                <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
                                 <p><b>URL:</b> @item.URL</p>
                             </div>
                             <div class="col-lg-8 float-right">
