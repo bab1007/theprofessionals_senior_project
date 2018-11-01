@@ -13,9 +13,9 @@ namespace The_Professionals_SeniorProject.DAL
     {
         public AchievementContext(DbContextOptions<AchievementContext> options) : base(options) { }
 
-        public DbSet<User> Users { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
-        public DbSet<Accomplishment> Accomplishments { get; set; }
+        public virtual DbSet<Accomplishment> Accomplishments { get; set; }
 
 
     }

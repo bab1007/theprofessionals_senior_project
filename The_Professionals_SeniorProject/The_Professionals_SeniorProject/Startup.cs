@@ -42,6 +42,9 @@ namespace The_Professionals_SeniorProject
             });
 
             services.AddDbContext<AchievementContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +63,7 @@ namespace The_Professionals_SeniorProject
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
             
 
             app.UseMvc(routes =>
