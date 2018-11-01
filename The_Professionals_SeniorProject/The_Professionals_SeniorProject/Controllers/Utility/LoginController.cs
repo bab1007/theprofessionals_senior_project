@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using The_Professionals_SeniorProject.DAL;
+using The_Professionals_SeniorProject.Models.Viewmodels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace The_Professionals_SeniorProject.Controllers.Utility
 {
-    public class LoginController
+    public class LoginController : Controller
     {
         private readonly AchievementContext _context;
 
@@ -17,6 +18,8 @@ namespace The_Professionals_SeniorProject.Controllers.Utility
             _context = context;
 
         }
+       
+        
 
     }
 }

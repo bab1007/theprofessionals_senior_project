@@ -5,13 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using The_Professionals_SeniorProject.Models;
+using The_Professionals_SeniorProject.DAL;
+using The_Professionals_SeniorProject.Models.Viewmodels;
 
 
 namespace The_Professionals_SeniorProject.Controllers
 {
+    
    
     public class HomeController : Controller
     {
+        private AchievementContext _context;
+
+        public HomeController(AchievementContext context)
+
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -24,6 +34,26 @@ namespace The_Professionals_SeniorProject.Controllers
             //ToDo: Build form to correspond with model User.cs
 
 
+        }
+        [HttpPost]
+        public IActionResult ValidUserRedirect(string Email, string Password)
+        {
+            
+
+            var userquery = from u in _context.Users
+                            where u.Email == Email
+                            where u.Password == Password
+                            select u;
+
+
+            if (userquery.ToList().Count == 1)
+            {
+                return RedirectToAction("Index", "Accomplishments");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
