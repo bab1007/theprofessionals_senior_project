@@ -1,3 +1,4 @@
+@model Accomplishment
 <!-- ======================= Main Work Area ================================-->
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -9,50 +10,50 @@
 
     <h2> Detailed View</h2><br>
     <div class="container">
-        <h4 class="text-center">Course Or Training</h4><br>
+        <h4 class="text-center">@Model.AchievementType</h4><br>
         <div class="row">
 
             <form class="ml-5" asp-action="#" asp-controller="#">
                 <div class="form-group">
                     <label for="school">School/Provider: </label>
-                    <input type="text" class="form-control" name="school" id="school" readonly placeholder="University of South Alabama">
+                    <input type="text" class="form-control" name="school" id="school" readonly value="@Model.Provider">
                 </div>
                 <div class="form-group">
                     <label for="activity">Activity: </label>
-                    <input type="text" class="form-control" name="activity" id="school" readonly placeholder="Advanced Data Management">
+                    <input type="text" class="form-control" name="activity" id="school" readonly value="@Model.Activity">
                 </div>
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <textarea class="form-control" rows="5" name="description" id="comment" readonly placeholder=" Describe topics covered in course and how it is relevant to your job."></textarea>
+                    <textarea class="form-control" rows="5" name="description" id="comment" readonly value="">@Model.Description</textarea>
                     <p class="float-right"><i>400 character limit</i></p>
                 </div>
 
                 <label>Start Date: </label>
                 <div class=" input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" readonly value="10-10-2010" />
+                    <input class="form-control" type="text" readonly value="@Model.DateStarted.ToShortDateString()" />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
 
                 <label>End Date: </label>
                 <div class=" input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" readonly value="10-10-2012" />
+                    <input class="form-control" type="text" readonly value="@Model.DateStarted.ToShortDateString()" />
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                 </div>
                 <div class="form-group">
                     <label for="url">URL: </label>
-                    <input type="text" class="form-control" name="url" readonly id="url" value="southalabama.edu">
+                    <input type="text" class="form-control" name="url" readonly id="url" value="@Model.URL">
                 </div>
                 <div class="form-group">
                     <label for="contact">Contact Person: </label>
-                    <input type="text" class="form-control" name="contact" readonly id="contact" value="Dr. Dre">
+                    <input type="text" class="form-control" name="contact" readonly id="contact" value="@Model.ContactPerson">
                 </div>
                 <div class="form-group">
                     <label for="contactPhone">Contact Phone: </label>
-                    <input type="text" class="form-control" name="contactPhone" readonly id="contactPhone" value="555-555-5555">
+                    <input type="text" class="form-control" name="contactPhone" readonly id="contactPhone" value="@Model.ContactPhone">
                 </div>
                 <div class="form-group">
                     <label for="contactEmail">Contact Email: </label>
-                    <input type="text" class="form-control" name="contactEmail" readonly id="contactEmail" value="upinsmoke@blah.com">
+                    <input type="text" class="form-control" name="contactEmail" readonly id="contactEmail" value="@Model.ContactEmail">
                 </div>
                 <br>
 

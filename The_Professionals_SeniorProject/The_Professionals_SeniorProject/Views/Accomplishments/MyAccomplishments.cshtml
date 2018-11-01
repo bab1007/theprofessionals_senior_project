@@ -22,6 +22,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach (var item in Model.Where(a => a.AchievementType == "Work"))
                 {
                     <tr>
@@ -29,7 +30,7 @@
                         <td>@item.JobTitle</td>
                         <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
                         <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
-                        <td><button class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID"> View Details</button></td>
+                        <td><a class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID">View Details</a></td>
                     </tr>
 
                  }
@@ -51,6 +52,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach (var item in Model.Where(a => a.AchievementType == "Course"))
                 {
                     <tr>
@@ -58,7 +60,7 @@
                         <td>@item.Activity</td>
                         <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
                         <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
-                        <td><button class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID"> View Details</button></td>
+                        <td><a asp-action="ViewAccomplishment" class="btn btn-info float-right" asp-route-id="@item.AchievementID"> View Details</a></td>
                     </tr>
 
                 }

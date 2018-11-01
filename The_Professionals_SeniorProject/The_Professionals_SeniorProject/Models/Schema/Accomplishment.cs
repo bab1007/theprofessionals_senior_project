@@ -50,9 +50,9 @@ namespace The_Professionals_SeniorProject.Models.Schema
         [System.ComponentModel.DefaultValue(false)]
         public bool IsApproved { get; set; }
 
-
-        
-        
-        
+        internal int Count()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
