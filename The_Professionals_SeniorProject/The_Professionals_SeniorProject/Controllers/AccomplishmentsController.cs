@@ -116,8 +116,23 @@ namespace The_Professionals_SeniorProject.Controllers
         {
             int user_id = 1; //Change to be the userID obtained through the session variables
             var myAccomplishments = _context.Accomplishments.Where(a => a.UserID == user_id);
+
+            List<Accomplishment> filteredResults = new List<Accomplishment>();
+            foreach(var a in myAccomplishments)
+            {
+                if(a.IsApproved == true)
+                {
+                    filteredResults.Add(a);
+                }
+            }
+
+            if(filteredResults.Count() == 0)
+            {
+                ViewBag.NoResult = "You have no approved accomplishments at this time.";
+
+            }
                                                             
-            return View(myAccomplishments);
+            return View(filteredResults);
         }
 
         //================= List User Accomplishments in a Table ======================================
@@ -127,16 +142,31 @@ namespace The_Professionals_SeniorProject.Controllers
             var myAccomplishments = _context.Accomplishments.Where(a => a.UserID == user_id)
                                                             .OrderBy(a => a.AchievementType);
 
-            return View(myAccomplishments);
+            List<Accomplishment> filteredAccomplishments = new List<Accomplishment>();
+
+            foreach( var a in myAccomplishments)
+            {
+                if(a.IsApproved == true)
+                {
+                    filteredAccomplishments.Add(a);
+                }
+            }
+
+            if(filteredAccomplishments.Count() == 0)
+            {
+                ViewBag.NoResult = "You Have No Approved Accomplishments At This Time.";
+            }
+
+            return View(filteredAccomplishments);
         }
+
+
 
 
         //================= View Accomplishment Details ======================================
         public IActionResult ViewAccomplishment(int id)
         {
             var accomplishment = _context.Accomplishments.FirstOrDefault(a => a.AchievementID == id);
-                                                         
-          
 
             return View(accomplishment);
         }

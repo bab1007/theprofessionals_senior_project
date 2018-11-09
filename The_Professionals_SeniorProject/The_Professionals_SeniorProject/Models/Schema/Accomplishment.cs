@@ -9,15 +9,14 @@ namespace The_Professionals_SeniorProject.Models.Schema
 {
     public class Accomplishment
 
-        //Represents Accomplishment table from schema
-        
+        //Represents Accomplishment table from schema 
     {
         [Key]
         public int AchievementID { get; set; }
         
         public int? UserID { get; set; }
         //Virtual property User represents foreign key relationship between User => Accomplishment
-        public virtual User User { get; }
+        public virtual User User { get; set; }
         
         public string Provider { get; set; }
 

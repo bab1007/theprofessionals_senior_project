@@ -3,7 +3,7 @@
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <a class="text-secondary" href="myAccomplishments.html"><h1 class="h2">My Accomplishments</h1></a>
+        <a class="text-secondary" asp-action="MyAccomplishments"><h1 class="h2">My Accomplishments</h1></a>
     </div>
 
     <!-- ================== Form ======================-->
@@ -13,48 +13,111 @@
         <h4 class="text-center">@Model.AchievementType</h4><br>
         <div class="row">
 
-            <form class="ml-5" asp-action="#" asp-controller="#">
-                <div class="form-group">
-                    <label for="school">School/Provider: </label>
-                    <input type="text" class="form-control" name="school" id="school" readonly value="@Model.Provider">
-                </div>
-                <div class="form-group">
-                    <label for="activity">Activity: </label>
-                    <input type="text" class="form-control" name="activity" id="school" readonly value="@Model.Activity">
-                </div>
-                <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" rows="5" name="description" id="comment" readonly value="">@Model.Description</textarea>
-                    <p class="float-right"><i>400 character limit</i></p>
-                </div>
+              <form class="ml-5 pb-0 mb-0" asp-action="ApprovalView">
 
-                <label>Start Date: </label>
-                <div class=" input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" readonly value="@Model.DateStarted.ToShortDateString()" />
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                </div>
+                @if (Model.Provider != null)
+                {
+                    <div class="form-group">
+                        <label for="school">School/Provider: </label>
+                        <input type="text" readonly class="form-control" asp-for="Provider">
+                    </div>
+                }
 
-                <label>End Date: </label>
-                <div class=" input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" readonly value="@Model.DateStarted.ToShortDateString()" />
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                </div>
-                <div class="form-group">
-                    <label for="url">URL: </label>
-                    <input type="text" class="form-control" name="url" readonly id="url" value="@Model.URL">
-                </div>
-                <div class="form-group">
-                    <label for="contact">Contact Person: </label>
-                    <input type="text" class="form-control" name="contact" readonly id="contact" value="@Model.ContactPerson">
-                </div>
-                <div class="form-group">
-                    <label for="contactPhone">Contact Phone: </label>
-                    <input type="text" class="form-control" name="contactPhone" readonly id="contactPhone" value="@Model.ContactPhone">
-                </div>
-                <div class="form-group">
-                    <label for="contactEmail">Contact Email: </label>
-                    <input type="text" class="form-control" name="contactEmail" readonly id="contactEmail" value="@Model.ContactEmail">
-                </div>
+                @if (Model.JobTitle != null)
+                {
+                    <div class="form-group">
+                        <label for="activity">Activity: </label>
+                        <input type="text" readonly class="form-control" asp-for="JobTitle">
+                    </div>
+
+                }
+
+                @if (Model.BookTitle != null)
+                {
+                    <div class="form-group">
+                        <label for="activity">Activity: </label>
+                        <input type="text" readonly class="form-control" asp-for="BookTitle">
+                    </div>
+
+                }
+
+                @if (Model.Author != null)
+                {
+                    <div class="form-group">
+                        <label for="activity">Activity: </label>
+                        <input type="text" readonly class="form-control" asp-for="JobTitle">
+                    </div>
+
+                }
+
+
+                @if (Model.Activity != null)
+                {
+                    <div class="form-group">
+                        <label for="activity">Activity: </label>
+                        <input type="text" readonly class="form-control" asp-for="Activity">
+                    </div>
+                }
+
+                @if (Model.Description != null)
+                {
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" readonly rows="5" asp-for="Description"></textarea>
+                        <p class="float-right"><i>400 character limit</i></p>
+                    </div>
+                }
+
+                @if (Model.DateStarted != null)
+                {
+                    <label>Start Date: </label>
+                    <div class=" input-group date" data-date-format="mm-dd-yyyy">
+                        <input class="form-control" readonly type="text" asp-for="DateStarted" />
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                }
+
+                @if (Model.DateCompleted != null)
+                {
+                    <label>End Date: </label>
+                    <div class=" input-group date" data-date-format="mm-dd-yyyy">
+                        <input class="form-control" readonly type="text" asp-for="DateCompleted" />
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                }
+
+                @if (Model.URL != null)
+                {
+                    <div class="form-group">
+                        <label for="url">URL: </label>
+                        <input type="text" readonly class="form-control" asp-for="URL">
+                    </div>
+                }
+
+                @if (Model.ContactPerson != null)
+                {
+                    <div class="form-group">
+                        <label for="contact">Contact Person: </label>
+                        <input type="text" readonly class="form-control" asp-for="ContactPerson">
+                    </div>
+                }
+
+                @if (Model.ContactPhone != null)
+                {
+                    <div class="form-group">
+                        <label for="contactPhone">Contact Phone: </label>
+                        <input type="text" class="form-control" name="contactPhone" readonly id="contactPhone" value="555-555-5555">
+                    </div>
+                }
+
+                @if (Model.ContactEmail != null)
+                {
+                    <div class="form-group">
+                        <label for="contactEmail">Contact Email: </label>
+                        <input type="text" readonly class="form-control" asp-for="ContactEmail">
+                    </div>
+                }
+
                 <br>
 
                 <br>

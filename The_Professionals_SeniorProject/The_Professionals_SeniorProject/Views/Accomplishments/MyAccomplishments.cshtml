@@ -6,126 +6,146 @@
         <h1 class="h2">My Accomplishments</h1>
     </div>
 
+    <h2>@ViewBag.NoResult</h2>
+
     <!-- ======================= Using foreach loops to generate table for each accomp. type, insert asp-action in buttons  ================-->
     <!-- ======================= Project Results Table =======================-->
-
-    <h4>Project Work</h4>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>Project</th>
-                    <th>Job Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var item in Model.Where(a => a.AchievementType == "Work"))
-                {
+    @if (Model.Where(a => a.AchievementType == "Work").Count() != 0)
+    {
+        <h4>Project Work</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
                     <tr>
-                        <td>@item.Provider</td>
-                        <td>@item.JobTitle</td>
-                        <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
-                        <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
-                        <td><a class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID">View Details</a></td>
+                        <th>Project</th>
+                        <th>Job Title</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th></th>
                     </tr>
+                </thead>
+                <tbody>
 
-                 }
 
-            </tbody>
-        </table>
-    </div>
-    <!-- ======================= Courses or Training Table ======================-->
-    <h4>Courses & Training</h4>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>School/Provider</th>
-                    <th>Activity</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
 
-                @foreach (var item in Model.Where(a => a.AchievementType == "Course"))
-                {
+                    @foreach (var item in Model.Where(a => a.AchievementType == "Work"))
+                    {
+                        <tr>
+                            <td>@item.Provider</td>
+                            <td>@item.JobTitle</td>
+                            <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
+                            <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
+                            <td><a class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID">View Details</a></td>
+                        </tr>
+
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (Model.Where(a => a.AchievementType == "Course").Count() != 0)
+    {
+        <!-- ======================= Courses or Training Table ======================-->
+        <h4>Courses & Training</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
                     <tr>
-                        <td>@item.Provider</td>
-                        <td>@item.Activity</td>
-                        <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
-                        <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
-                        <td><a asp-action="ViewAccomplishment" class="btn btn-info float-right" asp-route-id="@item.AchievementID"> View Details</a></td>
+                        <th>School/Provider</th>
+                        <th>Activity</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th></th>
                     </tr>
+                </thead>
+                <tbody>
 
-                }
+                    @foreach (var item in Model.Where(a => a.AchievementType == "Course"))
+                    {
+                        <tr>
+                            <td>@item.Provider</td>
+                            <td>@item.Activity</td>
+                            <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
+                            <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
+                            <td><a asp-action="ViewAccomplishment" class="btn btn-info float-right" asp-route-id="@item.AchievementID"> View Details</a></td>
+                        </tr>
 
-            </tbody>
-        </table>
-    </div>
-    <!-- ======================= Online or Digital Media Table ================-->
-    <h4>Online or Digital Media</h4>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>Provider</th>
-                    <th>Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Where(a => a.AchievementType == "Media"))
-                {
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (Model.Where(a => a.AchievementType == "Media").Count() != 0)
+    {
+        <!-- ======================= Online or Digital Media Table ================-->
+        <h4>Online or Digital Media</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
                     <tr>
-                        <td>@item.Provider</td>
-                        <td>@item.Activity</td>
-                        <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
-                        <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
-                        <td><button class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID"> View Details</button></td>
+                        <th>Provider</th>
+                        <th>Title</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th></th>
                     </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Where(a => a.AchievementType == "Media"))
+                    {
+                        <tr>
+                            <td>@item.Provider</td>
+                            <td>@item.Activity</td>
+                            <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
+                            <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
+                            <td><a class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID"> View Details</a></td>
+                        </tr>
 
-                }
-            </tbody>
-        </table>
-    </div>
-    <!-- ======================= Read Result Table ================-->
-    <h4>Read</h4>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>Author</th>
-                    <th>Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Where(a => a.AchievementType == "Read"))
-                {
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if (Model.Where(a => a.AchievementType == "Read").Count() != 0)
+     {
+            <!-- ======================= Read Result Table ================-->
+        <h4>Read</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-sm">
+                <thead>
                     <tr>
-                        <td>@item.Author</td>
-                        <td>@item.BookTitle</td>
-                        <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
-                        <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
-                        <td><button class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID"> View Details</button></td>
+                        <th>Author</th>
+                        <th>Title</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th></th>
                     </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Where(a => a.AchievementType == "Read"))
+                    {
+                        <tr>
+                            <td>@item.Author</td>
+                            <td>@item.BookTitle</td>
+                            <td>@item.DateStarted.ToString("MM/dd/yyyy")</td>
+                            <td>@item.DateCompleted.ToString("MM/dd/yyyy")</td>
+                            <td><a class="btn btn-info float-right" asp-action="ViewAccomplishment" asp-route-id="@item.AchievementID"> View Details</a></td>
+                        </tr>
 
-                }
-            </tbody>
-        </table>
+                    }
+                </tbody>
+            </table>
 
-        <br>
-        <br>
+            <br>
+            <br>
 
-    </div>
+        </div>
+     }
+
 </main>

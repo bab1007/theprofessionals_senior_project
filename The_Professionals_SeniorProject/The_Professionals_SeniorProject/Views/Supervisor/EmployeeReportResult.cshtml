@@ -1,58 +1,137 @@
-  <!-- ======================= Main Work Area ================================-->
+@using System.Linq
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+@model IEnumerable<Accomplishment>
+ <!-- ======================= Main Work Area ================================-->
+
+<main role="main" id="resume" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-        <h1 class="h2">Supervisor</h1>
+        <a class="text-secondary" asp-action="EmployeeReport">
+            <h1 class="h2">Supervisor View</h1>
+        </a>
     </div>
 
-    <br>
-    <br>
-    <!-- ======================= Using foreach loops to generate table for approval request, insert asp-action in buttons  ================-->
-    <h3>Project Work</h3>
-    <div class="table-responsive">
-        <table class="table table-striped table-sm">
-            <thead>
-                <tr>
-                    <th>Project</th>
-                    <th>Job Title</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>PMIS</td>
-                    <td>Developer</td>
-                    <td>8/21/2018</td>
-                    <td>12/15/2018</td>
-                    <td><button class="btn btn-info float-right"> View Details</button></td>
-                </tr>
-                <tr>
-                    <td>Barry Good Sweets</td>
-                    <td>Front End</td>
-                    <td>9/21/2018</td>
-                    <td>12/05/2018</td>
-                    <td><button class="btn btn-info float-right"> View Details</button></td>
-                </tr>
-                <tr>
-                    <td>SMS Gate Security</td>
-                    <td>Developer</td>
-                    <td>09/29/2018</td>
-                    <td>11/15/2018</td>
-                    <td><button class="btn btn-info float-right"> View Details</button></td>
-                </tr>
-                <tr>
-                    <td>Geaux Rescue</td>
-                    <td>Developer</td>
-                    <td>09/21/2018</td>
-                    <td>12/15/2018</td>
-                    <td><button class="btn btn-info float-right"> View Details</button></td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- ================== Internal Resume  ======================-->
+
+    <h2> Internal Resume</h2><br>
+    <div class="container border border-dark rounded">
+        <h3 class="text-center mt-3 ">@ViewBag.UserName</h3><br>
+        <div class="row">
+            <!-- ============== Each Achievment Type will have their own int-resume div and replicate <li> with foreach loop =====-->
+            <!-- ================== Check for Work Achievement Types  ======================-->
+
+            @if (@Model.Where(a => a.AchievementType == "Work").Count() != 0)
+            {
+                <div class="int-Resume bg-info">
+                    <h4 class="ml-4 pt-2 text-white">Work Experience</h4>
+                    <ul class="list-group list-group-flush">
+
+                        @foreach (var item in (@Model.Where(a => a.AchievementType == "Work")))
+                        {
+                            <li class="list-group-item">
+                                <div class="col-lg-4 float-left">
+                                    <p><b>Project Name: </b> @item.Provider</p>
+                                    <p><b>Job Title: </b> @item.JobTitle</p>
+                                    <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
+                                </div>
+
+                                <div class="col-lg-8 float-right">
+                                    <p><b>Responsibilities:</b></p>
+                                    <p>@item.Description</p>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            }
+            <!-- ================== Check for Course Achievement Types  ======================-->
+
+            @if (Model.Where(a => a.AchievementType == "Course").Count() != 0)
+            {
+                <div class="int-Resume bg-info">
+                    <h4 class="ml-4 pt-2 text-white">Courses & Training</h4>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var item in Model.Where(a => a.AchievementType == "Course"))
+                        {
+                            <li class="list-group-item">
+                                <div class="col-lg-4 float-left">
+                                    <p><b>School/Provider: </b> @item.Provider</p>
+                                    <p><b>Activity Name: </b> @item.Activity</p>
+                                    <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
+                                    <p><b>Instructor:</b> @item.ContactPerson</p>
+                                </div>
+                                <div class="col-lg-8 float-right">
+                                    <p><b>Course Description:</b></p>
+                                    <p>@item.Description</p>
+                                </div>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            }
+
+
+
+
+            <!-- ================== Check for Read Achievement Types  ======================-->
+
+            @if (Model.Where(a => a.AchievementType == "Read").Count() != 0)
+            {
+                <div class="int-Resume bg-info">
+                    <h4 class="ml-4 pt-2 text-white">Relevant Reading</h4>
+                    <ul class="list-group list-group-flush">
+                        @foreach (var item in Model.Where(a => a.AchievementType == "Read"))
+                        {
+                            <li class="list-group-item">
+                                <div class="col-lg-4 float-left">
+                                    <p><b>Author: </b> @item.Author</p>
+                                    <p><b>Title: </b> @item.BookTitle</p>
+                                    <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
+                                    <p><b>URL:</b> @item.URL</p>
+                                </div>
+                                <div class="col-lg-8 float-right">
+                                    <p><b>Course Description:</b></p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </div>
+                            </li>
+
+                        }
+
+                    </ul>
+                </div>
+            }
+
+            @if (@Model.Where(a => a.AchievementType == "Media").Count() != 0)
+            {
+                <div class="int-Resume bg-info">
+                    <h4 class="ml-4 pt-2 text-white">Media</h4>
+                    <ul class="list-group list-group-flush">
+
+                        @foreach (var item in (@Model.Where(a => a.AchievementType == "Media")))
+                        {
+                            <li class="list-group-item">
+
+                                <div class="col-lg-4 float-left">
+                                    <p><b>Project Name: </b> @item.Provider</p>
+                                    <p><b>Job Title: </b> @item.Provider</p>
+                                    <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
+                                </div>
+
+                                <div class="col-lg-8 mr-0 pr-0 float-right">
+                                    <p><b>Responsibilities:</b></p>
+                                    <p>@item.Description</p>
+                                </div>
+
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            }
+
+
+        </div><br>
     </div>
-
-   
-
+    <br><br>
 </main>

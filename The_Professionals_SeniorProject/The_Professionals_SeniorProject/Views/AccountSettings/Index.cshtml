@@ -1,3 +1,4 @@
+@model User
 <!-- ======================= Main Work Area ================================-->
 
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
@@ -10,43 +11,51 @@
     <h2 class="text-center">My Info</h2><br>
     <div class="container">
         <div class="row">
-            <form class="ml-5" asp-action="#" asp-controller="#">
+            <form class="ml-5" asp-action="Index" >
                 <div class="form-group">
                     <label for="school">Employee ID: </label>
-                    <input type="text" class="form-control" name="EmployeeID" id="EmployeeID" placeholder="2018467">
+                    <input type="text" class="form-control" asp-for="UserID">
+                    <span asp-validation-for="UserID"></span>
                 </div>
                 <div class="form-group">
                     <label for="activity">First Name: </label>
-                    <input type="text" class="form-control" name="FirstName" id="FirstName" placeholder="John">
+                    <input type="text" class="form-control" asp-for="Fname">
+                    <span asp-validation-for="Fname"></span>
                 </div>
                 <div class="form-group">
                     <label for="activity">Last Name: </label>
-                    <input type="text" class="form-control" name="LastName" id="LastName" placeholder="Doe">
+                    <input type="text" class="form-control" asp-for="Lname">
+                    <span asp-validation-for="Lname"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="activity">Email: </label>
-                    <input type="text" class="form-control" name="Email" id="Email" placeholder="johndoe123@company.com">
+                    <input type="text" class="form-control" asp-for="Email">
+                    <span asp-validation-for="Email"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="activity">Phone: </label>
-                    <input type="text" class="form-control" name="Phone" id="phone" placeholder="555-555-555">
+                    <input type="text" class="form-control" asp-for="Phone">
+                    <span asp-validation-for="Phone"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="url"> Password: </label>
-                    <input type="text" class="form-control" name="password" id="password">
+                    <input type="password" class="form-control" value="@Model.Password" asp-for="Password">
+                    <span asp-validation-for="Password"></span>
                 </div>
+
 
                 <div class="form-group">
                     <label for="contact">Supervisor ID: </label>
-                    <input type="text" class="form-control" name="SupervisorID" id="SupervisorID">
+                    <input type="text" class="form-control" asp-for="SupervisorID">
+                    <span asp-validation-for="SupervisorID"></span>
                 </div>
 
 
                 <br>
-                <button type="submit" class="btn btn-primary">Save Changes</button><br>
+                <button type="submit" class="btn btn-info">Save Changes</button><br>
                 <br>
             </form>
 
