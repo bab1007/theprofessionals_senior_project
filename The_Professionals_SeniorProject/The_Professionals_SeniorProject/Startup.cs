@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using The_Professionals_SeniorProject.DAL;
-
+using Rotativa.AspNetCore;
 
 namespace The_Professionals_SeniorProject
 {
@@ -72,6 +72,8 @@ namespace The_Professionals_SeniorProject
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            RotativaConfiguration.Setup(env);
         }
     }
 }
