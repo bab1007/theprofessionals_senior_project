@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Rotativa.AspNetCore;
 using The_Professionals_SeniorProject.DAL;
 using The_Professionals_SeniorProject.Models.Schema;
 using The_Professionals_SeniorProject.Models.Viewmodels;
@@ -134,6 +135,8 @@ namespace The_Professionals_SeniorProject.Controllers
             }
                                                             
             return View(filteredResults);
+           
+
         }
 
         //================= List User Accomplishments in a Table ======================================
@@ -161,7 +164,31 @@ namespace The_Professionals_SeniorProject.Controllers
             return View(filteredAccomplishments);
         }
 
+        //================= Export Internal Resume ======================================
 
+            public IActionResult ExportResume()
+        {
+            int user_id = 1; //Change to be the userID obtained through the session variables
+            var myAccomplishments = _context.Accomplishments.Where(a => a.UserID == user_id);
+
+            List<Accomplishment> filteredResults = new List<Accomplishment>();
+            foreach (var a in myAccomplishments)
+            {
+                if (a.IsApproved == true)
+                {
+                    filteredResults.Add(a);
+                }
+            }
+
+            if (filteredResults.Count() == 0)
+            {
+                ViewBag.NoResult = "You have no approved accomplishments at this time.";
+
+            }
+
+            return new ViewAsPdf(filteredResults);
+           
+        }
 
 
         //================= View Accomplishment Details ======================================

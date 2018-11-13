@@ -1,0 +1,153 @@
+﻿
+@{
+    Layout = null;
+    ViewData["Title"] = "ExportResume";
+
+}
+
+@using System.Linq
+
+@model IEnumerable<Accomplishment>
+ <!-- ======================= Main Work Area ================================-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - The_Professionals_SeniorProject</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="~/css/dashboard.css" rel="stylesheet">
+
+</head>
+<body>
+    <main role="main" id="resume" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+        <!-- ================== Internal Resume  ======================-->
+
+        <h2> Internal Resume</h2><br>
+        <div class="container">
+            <h3 class="text-center mt-3 ">John Doe</h3><br>
+            <div class="row">
+                <!-- ============== Each Achievment Type will have their own int-resume div and replicate <li> with foreach loop =====-->
+                <!-- ================== Check for Work Achievement Types  ======================-->
+
+                @if (@Model.Where(a => a.AchievementType == "Work").Count() != 0)
+                {
+                    <div class="int-Resume col-lg-12">
+                        <h4 class="ml-4 pt-2">Work Experience</h4><hr />
+                        <ul class=" ">
+
+                            @foreach (var item in (@Model.Where(a => a.AchievementType == "Work")))
+                            {
+                                <li class="pb-3">
+                                    <div class="col-lg-10 ">
+                                        <p><b>Project Name: </b> @item.Provider</p>
+                                        <p><b>Job Title: </b> @item.JobTitle</p>
+                                        <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
+                                        <p><b>Responsibilities:</b> @item.Description</p>
+                                       
+                                    </div>
+                                    
+                                </li>
+                            
+                            }
+
+                        </ul>
+                    </div>
+                }
+                </div>
+
+                <div class="row">
+                <!-- ================== Check for Course Achievement Types  ======================-->
+
+                @if (Model.Where(a => a.AchievementType == "Course").Count() != 0)
+                {
+                    <div class="int-Resume col-lg-12">
+                        <h4 class="ml-4 pt-2 ">Courses & Training</h4><hr />
+                        <ul class="">
+                            @foreach (var item in Model.Where(a => a.AchievementType == "Course"))
+                            {
+                                <li class="">
+                                    <div class="col-lg-10">
+                                        <p><b>School/Provider: </b> @item.Provider</p>
+                                        <p><b>Activity Name: </b> @item.Activity</p>
+                                        <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
+                                        <p><b>Instructor:</b> @item.ContactPerson</p>
+                                        <p><b>Course Description:</b> @item.Description</p>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                }
+
+                </div>
+
+                <div class="row">
+                <!-- ================== Check for Read Achievement Types  ======================-->
+
+                @if (Model.Where(a => a.AchievementType == "Read").Count() != 0)
+                {
+                    <div class="int-Resume col-lg-12">
+                        <h4 class="ml-4 pt-2">Relevant Reading</h4><hr />
+                        <ul class="">
+                            @foreach (var item in Model.Where(a => a.AchievementType == "Read"))
+                            {
+                                <li class="">
+                                    <div class="col-lg-10 ">
+                                        <p><b>Author: </b> @item.Author</p>
+                                        <p><b>Title: </b> @item.BookTitle</p>
+                                        <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
+                                        <p><b>URL :</b> @item.URL</p>
+                                        <p><b>Course Description:</b> @item.Description</p>
+                                    </div>
+
+                                </li>
+
+                            }
+
+                        </ul>
+                    </div>
+                }
+
+                </div>
+
+                <div class="row">
+
+                @if (@Model.Where(a => a.AchievementType == "Media").Count() != 0)
+                {
+                    <div class="int-Resume col-lg-12">
+                        <h4 class="ml-4 pt-2 ">Media</h4><hr />
+                        <ul class="">
+
+                            @foreach (var item in (@Model.Where(a => a.AchievementType == "Media")))
+                            {
+                                <li class="">
+
+                                    <div class="col-lg-10">
+                                        <p><b>Project Name: </b> @item.Provider</p>
+                                        <p><b>Job Title: </b> @item.Provider</p>
+                                        <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
+                                        <p><b>Responsibilities:</b> @item.Description</p>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                }
+
+
+                </div><br>
+        </div>
+        <br><br>
+    </main>
+    <!-- Bootstrap core JavaScript================================================== -->
+   
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  
+
+
+</body>
+</html>
