@@ -16,7 +16,7 @@ namespace The_Professionals_SeniorProject.Models.Schema
         
         public int? UserID { get; set; }
         //Virtual property User represents foreign key relationship between User => Accomplishment
-        public virtual User User { get; set; }
+        public virtual PMISUser User { get; set; }
         
         public string Provider { get; set; }
 

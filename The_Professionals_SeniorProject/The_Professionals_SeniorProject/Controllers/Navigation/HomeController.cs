@@ -44,11 +44,21 @@ namespace The_Professionals_SeniorProject.Controllers
                             where u.Email == Email
                             where u.Password == Password
                             select u;
+            LoginViewModel LVM = new LoginViewModel();
 
 
             if (userquery.ToList().Count == 1)
             {
-                return RedirectToAction("Index", "Accomplishments");
+               
+                foreach (var user in userquery)
+                {
+                    LVM.UserName = user.Fname + " " + user.Lname;
+                    LVM.UserEmail = user.Email;
+                    LVM.UserAccomplishments = user.Accomplishments;
+                    
+                    
+                }
+                return RedirectToAction("Index", "Accomplishments", LVM);
             }
             else
             {

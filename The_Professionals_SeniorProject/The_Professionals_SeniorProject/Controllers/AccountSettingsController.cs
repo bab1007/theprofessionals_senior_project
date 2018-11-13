@@ -25,7 +25,7 @@ namespace The_Professionals_SeniorProject.Controllers
 
         //===============  Edit account settings information ===========================
         [HttpPost]
-        public IActionResult Index(User user)
+        public IActionResult Index(PMISUser user)
         {
             if (ModelState.IsValid)
             {
