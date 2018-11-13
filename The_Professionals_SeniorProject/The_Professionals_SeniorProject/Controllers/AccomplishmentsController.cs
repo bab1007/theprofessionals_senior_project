@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using The_Professionals_SeniorProject.DAL;
 using The_Professionals_SeniorProject.Models.Schema;
-using The_Professionals_SeniorProject.Models.Viewmodels;
 
 namespace The_Professionals_SeniorProject.Controllers
 {
@@ -18,9 +17,9 @@ namespace The_Professionals_SeniorProject.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(LoginViewModel LVM)
+        public IActionResult Index()
         {
-            return View(LVM);
+            return View();
         }
     
 

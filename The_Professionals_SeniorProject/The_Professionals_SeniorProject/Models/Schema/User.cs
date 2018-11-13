@@ -10,7 +10,7 @@ using The_Professionals_SeniorProject.Models.Schema;
 
 namespace The_Professionals_SeniorProject.Models.Schema
 {
-    public class PMISUser
+    public class User
     {
         [Key]
         public int UserID { get; set; }

@@ -1,13 +1,9 @@
-@{ 
-    @model The_Professionals_SeniorProject.Models.Viewmodels.LoginViewModel
-}
-
 <main  class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4 bg-white">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
     </div>
 
-    <h2>Welcome, @Model.UserName</h2>
+    <h2>Welcome, John Doe</h2>
     <div class="container">
         <div class="row p-5" id="accomplishments">
             <div class="col-sm-5 card card-block text-white bg-dark p-2 pl-3 mb-3 m-2" onclick="location.href='@Url.Action("MyAccomplishments")'">
