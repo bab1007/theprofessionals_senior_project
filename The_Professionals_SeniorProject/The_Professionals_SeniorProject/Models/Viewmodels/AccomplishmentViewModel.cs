@@ -7,7 +7,7 @@ using The_Professionals_SeniorProject.Models.Schema;
 
 namespace The_Professionals_SeniorProject.Models.Viewmodels
 {
-    public class LoginViewModel
+    public class AccomplishmentViewModel
     {
        public string UserEmail { get; set; }
 
@@ -16,7 +16,7 @@ namespace The_Professionals_SeniorProject.Models.Viewmodels
        public ICollection<Accomplishment> UserAccomplishments { get; set; }
 
 
-       public LoginViewModel()
+       public AccomplishmentViewModel()
         {
             this.UserAccomplishments = new List<Accomplishment>();
 

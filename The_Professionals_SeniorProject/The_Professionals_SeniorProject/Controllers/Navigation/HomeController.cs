@@ -44,7 +44,7 @@ namespace The_Professionals_SeniorProject.Controllers
                             where u.Email == Email
                             where u.Password == Password
                             select u;
-            LoginViewModel LVM = new LoginViewModel();
+            AccomplishmentViewModel LVM = new AccomplishmentViewModel();
 
 
             if (userquery.ToList().Count == 1)

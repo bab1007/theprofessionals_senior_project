@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using The_Professionals_SeniorProject.DAL;
 using The_Professionals_SeniorProject.Models.Schema;
+using The_Professionals_SeniorProject.Models.Viewmodels;
 
 namespace The_Professionals_SeniorProject.Controllers
 {
@@ -14,9 +15,11 @@ namespace The_Professionals_SeniorProject.Controllers
     {
       
         private readonly AchievementContext _context;
+        AccomplishmentViewModel AVM;
 
         public SupervisorController(AchievementContext context)
         {
+            AVM = new AccomplishmentViewModel();
             _context = context;
         }
         //=========== Supervisor views approvals where supervisorID == their EmployeeID =========================
@@ -98,8 +101,15 @@ namespace The_Professionals_SeniorProject.Controllers
 
         public IActionResult EmployeeReportResult(int id)
         {
+           
+            List<Accomplishment> empAccomplishments = new List<Accomplishment>();
+            /*Need to hardcode the UserID for the accomplishments to show, TODO: Fix issue with Icollection of Achievements not populating*/
+            empAccomplishments = _context.Accomplishments.Where(x => x.UserID == 4).ToList(); 
 
-            return View();                 
+            AccomplishmentViewModel ReportVM = new AccomplishmentViewModel();
+            ReportVM.UserAccomplishments = empAccomplishments;
+
+            return View(ReportVM);                 
         }
     }
 }

@@ -19,7 +19,7 @@ namespace The_Professionals_SeniorProject.Controllers
         {
             _context = context;
         }
-        public IActionResult Index(LoginViewModel LVM)
+        public IActionResult Index(AccomplishmentViewModel LVM)
         {
             return View(LVM);
         }

@@ -33,7 +33,8 @@ namespace The_Professionals_SeniorProject.Models.Schema
         
         //ICollection is an interface to represent a collection of Accomplishments unique to each User
         public ICollection<Accomplishment> Accomplishments { get; set; }
-
+        
+        
     
 
 
