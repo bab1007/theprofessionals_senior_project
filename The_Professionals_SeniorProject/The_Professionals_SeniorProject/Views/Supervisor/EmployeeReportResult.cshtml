@@ -1,45 +1,14 @@
 @using System.Linq
 
-@model The_Professionals_SeniorProject.Models.Viewmodels.AccomplishmentViewModel
+@model IEnumerable<Accomplishment>
 
-@{
-    List<Accomplishment> WorkAccomplishments = new List<Accomplishment>();
-    List<Accomplishment> CourseAccomplishments = new List<Accomplishment>();
-    List<Accomplishment> ReadAccomplishments = new List<Accomplishment>();
-    List<Accomplishment> MediaAccomplishments = new List<Accomplishment>();
-
-    foreach (var item in (@Model.UserAccomplishments.Where(a => a.AchievementType == "Work")))
-    {
-        WorkAccomplishments.Add(item);
-
-    }
-
-    foreach (var item in (@Model.UserAccomplishments.Where(a => a.AchievementType == "Course")))
-    {
-        CourseAccomplishments.Add(item);
-
-    }
-
-    foreach (var item in (@Model.UserAccomplishments.Where(a => a.AchievementType == "Read")))
-    {
-        ReadAccomplishments.Add(item);
-
-    }
-
-    foreach (var item in (@Model.UserAccomplishments.Where(a => a.AchievementType == "Media")))
-    {
-        MediaAccomplishments.Add(item);
-
-    }
-
-
-}
 <!-- ======================= Main Work Area ================================-->
 
 <main role="main" id="resume" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+   
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
         <a class="text-secondary" asp-action="EmployeeReport">
-            <h1 class="h2">Supervisor View</h1>
+            <h1 class="h2">Back to Employee Reports</h1>
         </a>
     </div>
 
@@ -52,13 +21,13 @@
             <!-- ============== Each Achievment Type will have their own int-resume div and replicate <li> with foreach loop =====-->
             <!-- ================== Check for Work Achievement Types  ======================-->
 
-            @if (WorkAccomplishments.Count != 0)
+            @if (@Model.Where(a => a.AchievementType == "Work").Count() != 0)
             {
-                <div class="int-Resume bg-info">
+                <div class="int-Resume bg-info col-lg-12">
                     <h4 class="ml-4 pt-2 text-white">Work Experience</h4>
                     <ul class="list-group list-group-flush">
 
-                        @foreach (var item in WorkAccomplishments)
+                        @foreach (var item in (@Model.Where(a => a.AchievementType == "Work")))
                         {
                             <li class="list-group-item">
                                 <div class="col-lg-4 float-left">
@@ -75,16 +44,17 @@
                         }
 
                     </ul>
+                    <hr />
                 </div>
             }
             <!-- ================== Check for Course Achievement Types  ======================-->
 
-            @if (CourseAccomplishments.Count != 0)
+            @if (Model.Where(a => a.AchievementType == "Course").Count() != 0)
             {
-                <div class="int-Resume bg-info">
+                <div class="int-Resume bg-info col-lg-12">
                     <h4 class="ml-4 pt-2 text-white">Courses & Training</h4>
                     <ul class="list-group list-group-flush">
-                        @foreach (var item in CourseAccomplishments)
+                        @foreach (var item in Model.Where(a => a.AchievementType == "Course"))
                         {
                             <li class="list-group-item">
                                 <div class="col-lg-4 float-left">
@@ -101,20 +71,18 @@
                         }
 
                     </ul>
+                    <hr />
                 </div>
             }
 
-
-
-
             <!-- ================== Check for Read Achievement Types  ======================-->
 
-            @if (ReadAccomplishments.Count != 0)
+            @if (Model.Where(a => a.AchievementType == "Read").Count() != 0)
             {
-                <div class="int-Resume bg-info">
+                <div class="int-Resume bg-info col-lg-12">
                     <h4 class="ml-4 pt-2 text-white">Relevant Reading</h4>
                     <ul class="list-group list-group-flush">
-                        @foreach (var item in ReadAccomplishments)
+                        @foreach (var item in Model.Where(a => a.AchievementType == "Read"))
                         {
                             <li class="list-group-item">
                                 <div class="col-lg-4 float-left">
@@ -132,17 +100,18 @@
                         }
 
                     </ul>
+                    <hr />
                 </div>
             }
-            <!-- ================== Check For Media Achievement Types =======================-->
 
-            @if (MediaAccomplishments.Count != 0)
+            @if (@Model.Where(a => a.AchievementType == "Media").Count() != 0)
             {
-                <div class="int-Resume bg-info">
+                <div class="int-Resume bg-info col-lg-12">
                     <h4 class="ml-4 pt-2 text-white">Media</h4>
+            
                     <ul class="list-group list-group-flush">
 
-                        @foreach (var item in MediaAccomplishments)
+                        @foreach (var item in (@Model.Where(a => a.AchievementType == "Media")))
                         {
                             <li class="list-group-item">
 
@@ -161,6 +130,7 @@
                         }
 
                     </ul>
+                    <hr />
                 </div>
             }
 

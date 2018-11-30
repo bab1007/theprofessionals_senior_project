@@ -259,3 +259,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/The_Professionals_SeniorProject/The_Professionals_SeniorProject/Migrations/20181114012033_TheProfessionals.cs

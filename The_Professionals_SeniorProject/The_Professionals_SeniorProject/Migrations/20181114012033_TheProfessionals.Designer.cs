@@ -10,7 +10,7 @@ using The_Professionals_SeniorProject.DAL;
 namespace The_Professionals_SeniorProject.Migrations
 {
     [DbContext(typeof(AchievementContext))]
-    [Migration("20181024031437_TheProfessionals")]
+    [Migration("20181114012033_TheProfessionals")]
     partial class TheProfessionals
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,7 +57,7 @@ namespace The_Professionals_SeniorProject.Migrations
 
                     b.Property<string>("URL");
 
-                    b.Property<int>("UserID");
+                    b.Property<int?>("UserID");
 
                     b.HasKey("AchievementID");
 
@@ -103,10 +103,9 @@ namespace The_Professionals_SeniorProject.Migrations
 
             modelBuilder.Entity("The_Professionals_SeniorProject.Models.Schema.Accomplishment", b =>
                 {
-                    b.HasOne("The_Professionals_SeniorProject.Models.Schema.User")
+                    b.HasOne("The_Professionals_SeniorProject.Models.Schema.User", "User")
                         .WithMany("Accomplishments")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserID");
                 });
 #pragma warning restore 612, 618
         }

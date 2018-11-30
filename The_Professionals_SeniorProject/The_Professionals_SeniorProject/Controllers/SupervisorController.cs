@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Rotativa.AspNetCore;
 using The_Professionals_SeniorProject.DAL;
 using The_Professionals_SeniorProject.Models.Schema;
 using The_Professionals_SeniorProject.Models.Viewmodels;
@@ -15,11 +16,11 @@ namespace The_Professionals_SeniorProject.Controllers
     {
       
         private readonly AchievementContext _context;
-        AccomplishmentViewModel AVM;
+       
 
         public SupervisorController(AchievementContext context)
         {
-            AVM = new AccomplishmentViewModel();
+            
             _context = context;
         }
         //=========== Supervisor views approvals where supervisorID == their EmployeeID =========================
@@ -36,7 +37,6 @@ namespace The_Professionals_SeniorProject.Controllers
                 {
                     filteredApprovals.Add(i);
                 }
-
 
             }
 
@@ -72,44 +72,44 @@ namespace The_Professionals_SeniorProject.Controllers
 
         }
 
-
-        public IActionResult CreateUser()
+        public IActionResult EmployeeReport(string noResult)
         {
-            return View();
-        }
+            var myEmployees = _context.Users.Where(u => u.SupervisorID == 1); // Insert session  Supervisor's Userid here
 
-        public IActionResult EmployeeReport()
-        {
-            var myEmployees = _context.Users.Where(u => u.SupervisorID == 1); // Insert session Userid here
-
-            List<SelectListItem> UserSelectList = new List<SelectListItem>();
-
-            // loop through Users and create select list to pass to view
-
-            foreach (var item in myEmployees)
+            if (noResult != null)
             {
-                SelectListItem newlistitem = new SelectListItem();
-                newlistitem.Value = item.UserID.ToString();
-                newlistitem.Text = item.Fname + " " + item.Lname;
-                UserSelectList.Add(newlistitem);
+                ViewBag.NoResult = noResult;
             }
-            //Assign Select Llist to ViewBag
-            ViewBag.MyUsers = UserSelectList;
 
-            return View();
+            return View(myEmployees);
         }
 
         public IActionResult EmployeeReportResult(int id)
         {
-           
-            List<Accomplishment> empAccomplishments = new List<Accomplishment>();
-            /*Need to hardcode the UserID for the accomplishments to show, TODO: Fix issue with Icollection of Achievements not populating*/
-            empAccomplishments = _context.Accomplishments.Where(x => x.UserID == 4).ToList(); 
+    
+           var empAccomplishments = _context.Accomplishments.Where(x => x.UserID == id && x.IsApproved == true);
+           var Username = _context.Users.FirstOrDefault(u => u.UserID == id);
+            ViewBag.UserName = Username.Fname + " " + Username.Lname;
+            
+            return View(empAccomplishments);                 
+        }
 
-            AccomplishmentViewModel ReportVM = new AccomplishmentViewModel();
-            ReportVM.UserAccomplishments = empAccomplishments;
+        public IActionResult EmployeeInternalResume(int id)
+        {
 
-            return View(ReportVM);                 
+            var empAccomplishments = _context.Accomplishments.Where(x => x.UserID == id && x.IsApproved == true);
+            if(empAccomplishments.Count()!= 0)
+            {
+                var Username = _context.Users.FirstOrDefault(u => u.UserID == id);
+
+
+                return new ViewAsPdf(empAccomplishments);
+            }
+            else
+            {
+                return RedirectToAction("EmployeeReport", new { noResult = "That employee has no approved accomplishments" });
+            }
+
         }
     }
 }

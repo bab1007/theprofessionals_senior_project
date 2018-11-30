@@ -133,7 +133,11 @@ namespace The_Professionals_SeniorProject.Controllers
                 ViewBag.NoResult = "You have no approved accomplishments at this time.";
 
             }
-                                                            
+
+            var Username = _context.Users.FirstOrDefault(a => a.UserID == user_id);
+            ViewBag.Username = Username.Fname + " " + Username.Lname;
+
+
             return View(filteredResults);
            
 
@@ -169,24 +173,17 @@ namespace The_Professionals_SeniorProject.Controllers
             public IActionResult ExportResume()
         {
             int user_id = 1; //Change to be the userID obtained through the session variables
-            var myAccomplishments = _context.Accomplishments.Where(a => a.UserID == user_id);
+            var myAccomplishments = _context.Accomplishments.Where(a => a.UserID == user_id && a.IsApproved ==true);
 
-            List<Accomplishment> filteredResults = new List<Accomplishment>();
-            foreach (var a in myAccomplishments)
-            {
-                if (a.IsApproved == true)
-                {
-                    filteredResults.Add(a);
-                }
-            }
-
-            if (filteredResults.Count() == 0)
+            if (myAccomplishments.Count() == 0)
             {
                 ViewBag.NoResult = "You have no approved accomplishments at this time.";
-
             }
 
-            return new ViewAsPdf(filteredResults);
+            var Username = _context.Users.FirstOrDefault(a => a.UserID == user_id);
+            
+
+            return new ViewAsPdf(myAccomplishments);
            
         }
 

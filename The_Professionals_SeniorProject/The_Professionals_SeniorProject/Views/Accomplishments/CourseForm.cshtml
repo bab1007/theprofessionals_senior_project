@@ -15,34 +15,36 @@
             <form class="ml-5" asp-action="CourseForm">
                 <input type="hidden" asp-for="AchievementType" value="Course" />
                 <!--Insert User Session Variable in USERID-->
-                <input type="hidden" asp-for="UserID" value="1" />
+                <input type="hidden" asp-for="UserID" value="1" required />
                 <div class="form-group">
                     <label asp-for="Provider" class="control-label"> School/Provider</label>
-                    <input asp-for="Provider" class="form-control" />
+                    <input asp-for="Provider" class="form-control" required />
                     <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Activity" class="control-label">Course Name/Activity:</label>
-                    <input asp-for="Activity" class="form-control" />
+                    <input asp-for="Activity" class="form-control" required />
                     <span class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Description" class="control-label"></label>
-                    <textarea rows="5" asp-for="Description" class="form-control"> </textarea>
+                    <textarea rows="5" asp-for="Description" required class="form-control"> </textarea>
                     <span class="text-danger"></span>
                 </div>
 
                 <label>Start Date: </label>
-                <div class="datepicker input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" asp-for="DateStarted" readonly />
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <div class=" form-group date" style="width:40%;" data-date-format="mm-dd-yyyy">
+                    <input type="date" id="fromDate" class=" form-control" required asp-for="DateStarted" />
+                    <span class="text-danger" asp-validation-for="DateStarted"></span>
                 </div>
 
+
                 <label>End Date: </label>
-                <div class="datepicker input-group date" data-date-format="mm-dd-yyyy">
-                    <input class="form-control" type="text" asp-for="DateCompleted" readonly />
-                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                <div class=" form-group date" style="width:40%;" data-date-format="mm-dd-yyyy">
+                    <input type="date" id="fromDate" class="form-control" required asp-for="DateCompleted" />
+                    <span class="text-danger" asp-validation-for="DateCompleted"></span>
                 </div>
+
                 <div class="form-group">
                     <label asp-for="URL" class="control-label"></label>
                     <input asp-for="URL" type="text" class="form-control" />

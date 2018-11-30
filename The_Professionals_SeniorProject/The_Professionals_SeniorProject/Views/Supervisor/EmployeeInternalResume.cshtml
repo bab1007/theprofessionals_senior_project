@@ -1,7 +1,6 @@
-﻿
-@{
+﻿@{
     Layout = null;
-    ViewData["Title"] = "ExportResume";
+    ViewData["Title"] = "Export Employee Resume";
 
 }
 
@@ -26,7 +25,7 @@
 
         <h2> Internal Resume</h2><br>
         <div class="container">
-            <h3 class="text-center mt-3 ">@Model.First().User.Fname @Model.First().User.Lname</h3><br>
+            <h3 class="text-center mt-3 ">@Model.First().User.Fname @Model.First().User.Lname </h3><br>
             <div class="row">
                 <!-- ============== Each Achievment Type will have their own int-resume div and replicate <li> with foreach loop =====-->
                 <!-- ================== Check for Work Achievement Types  ======================-->
@@ -45,19 +44,19 @@
                                         <p><b>Job Title: </b> @item.JobTitle</p>
                                         <p><b>Dates: </b> @item.DateStarted.ToString("MM/dd/yyyy") - @item.DateCompleted.ToString("MM/dd/yyyy")</p>
                                         <p><b>Responsibilities:</b> @item.Description</p>
-                                       
+
                                     </div>
-                                    
+
                                 </li>
-                            
+
                             }
 
                         </ul>
                     </div>
                 }
-                </div>
+            </div>
 
-                <div class="row">
+            <div class="row">
                 <!-- ================== Check for Course Achievement Types  ======================-->
 
                 @if (Model.Where(a => a.AchievementType == "Course").Count() != 0)
@@ -82,9 +81,9 @@
                     </div>
                 }
 
-                </div>
+            </div>
 
-                <div class="row">
+            <div class="row">
                 <!-- ================== Check for Read Achievement Types  ======================-->
 
                 @if (Model.Where(a => a.AchievementType == "Read").Count() != 0)
@@ -111,9 +110,9 @@
                     </div>
                 }
 
-                </div>
+            </div>
 
-                <div class="row">
+            <div class="row">
 
                 @if (@Model.Where(a => a.AchievementType == "Media").Count() != 0)
                 {
@@ -139,14 +138,14 @@
                 }
 
 
-                </div><br>
+            </div><br>
         </div>
         <br><br>
     </main>
     <!-- Bootstrap core JavaScript================================================== -->
-   
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  
+
 
 
 </body>
