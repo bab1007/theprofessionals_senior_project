@@ -72,6 +72,24 @@ namespace The_Professionals_SeniorProject.Controllers
 
         }
 
+        public IActionResult Deny(int id)
+        {
+            var accomplishment = _context.Accomplishments.FirstOrDefault(a => a.AchievementID == id);
+            
+
+            if (ModelState.IsValid)
+            {
+
+                _context.Remove(accomplishment);
+                _context.SaveChanges();
+                return RedirectToAction("Approvals");
+
+            }
+
+            return RedirectToAction("ApprovalView", id);
+
+        }
+
         public IActionResult EmployeeReport(string noResult)
         {
             var myEmployees = _context.Users.Where(u => u.SupervisorID == 1); // Insert session  Supervisor's Userid here

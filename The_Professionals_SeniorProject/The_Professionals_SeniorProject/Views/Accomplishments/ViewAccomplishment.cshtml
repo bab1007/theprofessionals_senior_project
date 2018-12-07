@@ -13,13 +13,13 @@
         <h4 class="text-center">@Model.AchievementType</h4><br>
         <div class="row">
 
-              <form class="ml-5 pb-0 mb-0" asp-action="ApprovalView">
+            <div class="ml-5 pb-0 mb-0" style="width:90%;">
 
                 @if (Model.Provider != null)
                 {
                     <div class="form-group">
                         <label for="school">School/Provider: </label>
-                        <input type="text" readonly class="form-control" asp-for="Provider">
+                        <input type="text" readonly class="form-control" value="@Model.Provider">
                     </div>
                 }
 
@@ -27,7 +27,7 @@
                 {
                     <div class="form-group">
                         <label for="activity">Activity: </label>
-                        <input type="text" readonly class="form-control" asp-for="JobTitle">
+                        <input type="text" readonly class="form-control" value="@Model.JobTitle">
                     </div>
 
                 }
@@ -36,7 +36,7 @@
                 {
                     <div class="form-group">
                         <label for="activity">Activity: </label>
-                        <input type="text" readonly class="form-control" asp-for="BookTitle">
+                        <input type="text" readonly class="form-control" value="@Model.BookTitle">
                     </div>
 
                 }
@@ -44,8 +44,8 @@
                 @if (Model.Author != null)
                 {
                     <div class="form-group">
-                        <label for="activity">Activity: </label>
-                        <input type="text" readonly class="form-control" asp-for="JobTitle">
+                        <label for="activity">Author: </label>
+                        <input type="text" readonly class="form-control" value="@Model.Author">
                     </div>
 
                 }
@@ -55,7 +55,7 @@
                 {
                     <div class="form-group">
                         <label for="activity">Activity: </label>
-                        <input type="text" readonly class="form-control" asp-for="Activity">
+                        <input type="text" readonly class="form-control" value="@Model.Activity">
                     </div>
                 }
 
@@ -63,7 +63,7 @@
                 {
                     <div class="form-group">
                         <label for="description">Description:</label>
-                        <textarea class="form-control" readonly rows="5" asp-for="Description"></textarea>
+                        <textarea class="form-control" readonly rows="5">@Model.Description</textarea>
                         <p class="float-right"><i>400 character limit</i></p>
                     </div>
                 }
@@ -72,7 +72,7 @@
                 {
                     <label>Start Date: </label>
                     <div class=" input-group date" data-date-format="mm-dd-yyyy">
-                        <input class="form-control" readonly type="text" asp-for="DateStarted" />
+                        <input class="form-control" readonly type="text"  value ="@Model.DateStarted.ToLongDateString()" />
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
                 }
@@ -81,7 +81,7 @@
                 {
                     <label>End Date: </label>
                     <div class=" input-group date" data-date-format="mm-dd-yyyy">
-                        <input class="form-control" readonly type="text" asp-for="DateCompleted" />
+                        <input class="form-control" readonly type="text" value = "@Model.DateCompleted.ToLongDateString()" />
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                     </div>
                 }
@@ -90,7 +90,7 @@
                 {
                     <div class="form-group">
                         <label for="url">URL: </label>
-                        <input type="text" readonly class="form-control" asp-for="URL">
+                        <input type="text" readonly class="form-control" value="@Model.URL">
                     </div>
                 }
 
@@ -98,7 +98,7 @@
                 {
                     <div class="form-group">
                         <label for="contact">Contact Person: </label>
-                        <input type="text" readonly class="form-control" asp-for="ContactPerson">
+                        <input type="text" readonly class="form-control" value="@Model.ContactPerson">
                     </div>
                 }
 
@@ -106,7 +106,7 @@
                 {
                     <div class="form-group">
                         <label for="contactPhone">Contact Phone: </label>
-                        <input type="text" class="form-control" name="contactPhone" readonly id="contactPhone" value="555-555-5555">
+                        <input type="text" class="form-control" name="contactPhone" readonly id="contactPhone" value="@Model.ContactPhone">
                     </div>
                 }
 
@@ -114,14 +114,14 @@
                 {
                     <div class="form-group">
                         <label for="contactEmail">Contact Email: </label>
-                        <input type="text" readonly class="form-control" asp-for="ContactEmail">
+                        <input type="text" readonly class="form-control" value="@Model.ContactEmail">
                     </div>
                 }
 
                 <br>
 
                 <br>
-            </form>
+            </div>
 
         </div><br>
     </div>
